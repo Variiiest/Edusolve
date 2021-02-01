@@ -1,0 +1,35 @@
+[
+{
+  "model": "courses.category",
+  "pk": 1,
+  "fields": {
+    "title": "Artificial Intelligence",
+    "slug": "artificial-intelligence"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 1,
+  "fields": {
+    "category": 1,
+    "subject_outline": "MACHINE LEARNING",
+    "slug": "Machine-Learning"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 1,
+  "fields": {
+    "subject": 1,
+    "teacher": 1,
+    "outline": "fkjgjdf gskdfg as,dj.fksd",
+    "slug": "cancer-prediction",
+    "overview": "Gadhe o sunmns dgsdfjg sdfgkjdf",
+    "syllabus": "certificate.jpg",
+    "course_banner": "3d-quotes-24.jpg",
+    "course_level": "Beginner",
+    "individual_price": 123,
+    "created": "2021-02-01T04:31:10.339Z"
+  }
+}
+]
