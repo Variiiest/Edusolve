@@ -1,6 +1,4 @@
 from django.db import models
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes.fields import GenericForeignKey
 
 # Create your models here.
 from django.contrib.auth.models import User
@@ -40,6 +38,7 @@ class Course(models.Model):
     individual_price=models.IntegerField()
     created= models.DateTimeField(auto_now_add= True)
     
+    
     class Meta:
         ordering= ['-created']
         
@@ -47,7 +46,7 @@ class Course(models.Model):
         return self.outline
     
 class Module(models.Model):
-    course= models.ForeignKey(Course, related_name='module_course', on_delete=models.CASCADE)
+    course= models.ForeignKey(Course, related_name='modules', on_delete=models.CASCADE)
     title= models.CharField(max_length=200,blank=True, null=True)
     description=  models.TextField(blank=True)
     def __str__(self):
@@ -55,15 +54,18 @@ class Module(models.Model):
     
 class Video(models.Model):
     title= models.CharField(max_length=200)
-    module= models.ForeignKey('Module', related_name='module_videos', on_delete=models.CASCADE)
+    module= models.ForeignKey('Module', related_name='videos', on_delete=models.CASCADE)
     file= models.FileField(upload_to='course/files', default=0)
+    
     def __str__(self):
-        self.title
+        return self.title
     
 class Note(models.Model):
-    module = models.ForeignKey('Module', related_name='module_notes', on_delete=models.CASCADE)
+    module = models.ForeignKey('Module', related_name='notes', on_delete=models.CASCADE)
     note_pdf= models.FileField(upload_to='notes/files')
     
+    def __str__(self):
+        return str(self.note_pdf)
 
 
     
