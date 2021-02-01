@@ -50,41 +50,25 @@ class Module(models.Model):
     course= models.ForeignKey(Course, related_name='module_course', on_delete=models.CASCADE)
     title= models.CharField(max_length=200,blank=True, null=True)
     description=  models.TextField(blank=True)
-    
     def __str__(self):
         return self.title
     
-    
-class Content(models.Model):
-    module= models.ForeignKey(Module, related_name='contents', on_delete= models.CASCADE)
-    content_type= models.ForeignKey(ContentType, on_delete= models.CASCADE)
-    
-    object_id= models.PositiveIntegerField()
-    item= GenericForeignKey('content_type', 'object_id')
-    
-class ItemBase(models.Model):
-    teacher= models.ForeignKey(User, related_name=' %(course)s_related', on_delete=models.CASCADE)
-    
+class Video(models.Model):
     title= models.CharField(max_length=200)
-    created= models.DateTimeField(auto_now_add=True)
-    
-    updated= models.DateTimeField(auto_now=True)
-    
-    class Meta:
-        abstract=True
-        
+    module= models.ForeignKey('Module', related_name='module_videos', on_delete=models.CASCADE)
+    file= models.FileField(upload_to='course/files', default=0)
     def __str__(self):
-        return self.title
+        self.title
     
+class Note(models.Model):
+    module = models.ForeignKey('Module', related_name='module_notes', on_delete=models.CASCADE)
+    note_pdf= models.FileField(upload_to='notes/files')
     
-class Text(ItemBase):
-    content= models.TextField()
+
+
     
-class File(ItemBase):
-    file= models.FileField(upload_to='files')
-    
-class Video(ItemBase):
-    file= models.FileField(upload_to= 'videos')
+
+
     
 
     

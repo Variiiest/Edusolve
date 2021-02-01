@@ -31,5 +31,14 @@
     "individual_price": 123,
     "created": "2021-02-01T04:31:10.339Z"
   }
+},
+{
+  "model": "courses.module",
+  "pk": 1,
+  "fields": {
+    "course": 1,
+    "title": "jkaslf sd",
+    "description": "kjsdf sdkjfhsjd fskdjfgsd"
+  }
 }
 ]

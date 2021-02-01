@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Subject, Course, Module
+from .models import Category, Subject, Course, Module, Video, Note
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -21,3 +21,15 @@ class CourseAdmin(admin.ModelAdmin):
     search_fields=['outline','overview']
     prepopulted_fields= {'slug':{'outline'}}
     inlines= [ModuleInline]
+    
+@admin.register(Video)
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    
+@admin.register(Note)
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ('note_pdf',)
+    
+    
+    
+
