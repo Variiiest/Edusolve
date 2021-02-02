@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 from rest_framework import generics 
 
@@ -11,7 +12,7 @@ class CategoryListView(generics.ListAPIView):
     queryset= Category.objects.all()
     
     serializer_class= CategorySerializer
-    
+    permission_classes = [IsAuthenticated]
 
 class CategoryDetailView(generics.RetrieveAPIView):
     queryset= Category.objects.all()

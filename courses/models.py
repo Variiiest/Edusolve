@@ -22,9 +22,9 @@ class Subject(models.Model):
     
 class Course(models.Model):
     CHOICES= {
-        ('Beginner', 'beginner'),
-        ('Intermediate', 'intermediate'),
-        ('Advanced', 'advanced'),
+        ('beginner', 'Beginner'),
+        ('intermediate', 'Intermediate'),
+        ('advanced', 'Advanced'),
     }
     
     subject= models.ForeignKey('Subject', related_name='sub_course', on_delete=models.SET_NULL, null= True)
